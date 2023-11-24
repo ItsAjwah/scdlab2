@@ -1,0 +1,55 @@
+import java.util.Random;
+
+public class DiceRollingGame {
+    public static void main(String[] args) {
+        int[][] board = new int[10][10];
+        int Row = 0; // Initial row position of 'x'
+        int Col = 0; // Initial column position of 'x'
+        Random rand = new Random();
+
+        int iteration = 1;
+        while (Row != 9 || Col != 9) {
+            int roll = rand.nextInt(6) + 1; // Random number from 1 to 6
+            System.out.println(iteration + " Iteration (Number generated: " + roll + ")");
+            board[Row][Col] = 0; // Clear the current position
+            int newRow = Row;
+            int newCol = Col;
+            
+            // Calculate the new position based on the dice roll
+            switch (roll) {
+                case 1:
+                    if (Row > 0) newRow--;
+                    break;
+                case 2:
+                    if (Row < 9) newRow++;
+                    break;
+                case 3:
+                    if (Col > 0) newCol--;
+                    break;
+                case 4:
+                    if (Col < 9) newCol++;
+                    break;
+                
+            }
+            
+         
+            Row = newRow;
+            Col = newCol;
+            
+           
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (i == Row && j == Col) {
+                        System.out.print("x ");
+                    } else {
+                        System.out.print("0 ");
+                    }
+                }
+                System.out.println();
+            }
+            
+            System.out.println();
+            iteration++;
+        }
+    }
+}

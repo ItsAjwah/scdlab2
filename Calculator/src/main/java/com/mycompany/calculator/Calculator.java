@@ -1,0 +1,181 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.calculator;
+import java.util.Scanner;
+
+public class Calculator {
+
+
+    public static int Add(int a, int b) {
+        return a + b;
+    }
+
+    public static float Add(float a, float b) {
+        return a + b;
+    }
+
+    public static double Add(String a, String b) {
+        try {
+            double num1 = Double.parseDouble(a);
+            double num2 = Double.parseDouble(b);
+            return num1 + num2;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            return 0.0;
+        }
+    }
+
+    public static int Add(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static double Add(String[] numbers) {
+        double sum = 0.0;
+        for (String num : numbers) {
+            try {
+                double parsedNum = Double.parseDouble(num);
+                sum += parsedNum;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Skipping non-numeric value: " + num);
+            }
+        }
+        return sum;
+    }
+
+
+    public static int Subtract(int a, int b) {
+        return a - b;
+    }
+
+    public static float Subtract(float a, float b) {
+        return a - b;
+    }
+
+    public static double Subtract(String a, String b) {
+        try {
+            double num1 = Double.parseDouble(a);
+            double num2 = Double.parseDouble(b);
+            return num1 - num2;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            return 0.0;
+        }
+    }
+
+  
+    public static int Multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static float Multiply(float a, float b) {
+        return a * b;
+    }
+
+    public static double Multiply(String a, String b) {
+        try {
+            double num1 = Double.parseDouble(a);
+            double num2 = Double.parseDouble(b);
+            return num1 * num2;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            return 0.0;
+        }
+    }
+
+   
+    public static double Divide(int a, int b) {
+        if (b == 0) {
+            System.out.println("Division by zero is not allowed.");
+            return 0.0;
+        }
+        return (double) a / b;
+    }
+
+    public static float Divide(float a, float b) {
+        if (b == 0.0f) {
+            System.out.println("Division by zero is not allowed.");
+            return 0.0f;
+        }
+        return a / b;
+    }
+
+    public static double Divide(String a, String b) {
+        try {
+            double num1 = Double.parseDouble(a);
+            double num2 = Double.parseDouble(b);
+
+            if (num2 == 0.0) {
+                System.out.println("Division by zero is not allowed.");
+                return 0.0;
+            }
+
+            return num1 / num2;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            return 0.0;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("Result of addition (int): " + Add((int) num1, (int) num2));
+        System.out.println("Result of addition (float): " + Add((float) num1, (float) num2));
+
+        System.out.println("Result of subtraction (int): " + Subtract((int) num1, (int) num2));
+        System.out.println("Result of subtraction (float): " + Subtract((float) num1, (float) num2));
+
+        System.out.println("Result of multiplication (int): " + Multiply((int) num1, (int) num2));
+        System.out.println("Result of multiplication (float): " + Multiply((float) num1, (float) num2));
+
+        System.out.println("Result of division (int): " + Divide((int) num1, (int) num2));
+        System.out.println("Result of division (float): " + Divide((float) num1, (float) num2));
+
+        scanner.nextLine(); 
+        System.out.print("Enter first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.print("Enter second string: ");
+        String str2 = scanner.nextLine();
+        System.out.println("Result of addition (string): " + Add(str1, str2));
+
+        System.out.println("Enter the number of integers in the array: ");
+        int numIntegers = scanner.nextInt();
+        int[] intArray = new int[numIntegers];
+
+        System.out.println("Enter the integers separated by spaces:");
+        for (int i = 0; i < numIntegers; i++) {
+            intArray[i] = scanner.nextInt();
+        }
+
+        System.out.println("Result of addition (integer array): " + Add(intArray));
+
+        scanner.nextLine(); 
+        System.out.print("Enter the number of strings in the array: ");
+        int numStrings = scanner.nextInt();
+        String[] strArray = new String[numStrings];
+
+        System.out.println("Enter the strings separated by spaces:");
+        for (int i = 0; i < numStrings; i++) {
+            strArray[i] = scanner.next();
+        }
+
+        System.out.println("Result of addition (string array): " + Add(strArray));
+
+        scanner.close();
+    }
+}
+
+
